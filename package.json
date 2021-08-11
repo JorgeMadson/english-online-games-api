@@ -4,7 +4,8 @@
   "description": "A simple Node app, instantly up and running.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "curl -H \"Content-Type: application/json\" -X POST -d '{\"username\":\"xyz\",\"password\":\"xyz\"}' http://localhost:3000/login"
   },
   "dependencies": {},
   "engines": {
