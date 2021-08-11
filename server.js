@@ -15,19 +15,32 @@ server.listen(PORT, () => {
 
 //ToDo move to other file
 function router(request, response) {
+  const STATUS_CODES = { OK: 200 };
+
   console.log(request.url, request.method);
 
   if (request.method === "GET") {
-    if (request.url === '/') {
-      return populateResponse("GET", response);
-    }    
-  } else if (request.method === "POST") {
+    return populateResponse("GET", response);
+  }
+  if (request.method === "POST") {
     if (request.url === '/login') {
-      console.log(request.body);
-      response.statusCode = 200;
-      response.setHeader("Content-Type", "text/plain");
-      response.end(`POST Login on English Online Games Backend! on ${showDate()}`);
-      return 
+
+      let data = '';
+      request.on('data', chunk => {
+        data += chunk;
+        if (data.length > 10000)
+                request.connection.destroy();
+      });
+      //Fetching the request data body
+      request.on('end', () => {
+        data = JSON.parse(data)
+        console.log(data); // 'username?'
+        response.statusCode = STATUS_CODES.OK;
+        response.setHeader("Content-Type", "application/json");
+        response.end(`Success Login from ${data.username} on ${showDate()}`);
+      });
+
+      return response;
     }
     return populateResponse("POST", response);
   } else {
@@ -46,9 +59,8 @@ function showDate() {
 }
 
 function populateResponse(method, response) {
-  const STATUS = { OK: 200 };
 
-  response.statusCode = STATUS.OK;
+  response.statusCode = STATUS_CODES.OK;
   response.setHeader("Content-Type", "text/plain");
   response.end(`${method} on English Online Games Backend! on ${showDate()}`);
   return response;
