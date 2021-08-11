@@ -10,6 +10,7 @@
   "engines": {
     "node": "12.x"
   },
+  "author": "Jorge Madson",
   "repository": {
     "url": "https://glitch.com/edit/#!/glitch-mvp-node"
   },
