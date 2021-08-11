@@ -1,10 +1,10 @@
-# Hello SQLite (blank)
+# English Online Games API
 
 This project includes a [Node.js](https://nodejs.org/en/about/) server script that uses a persistent [SQLite](https://www.sqlite.org) database.
 
 The database stores chat messages, each one with an ID and string of message text. The endpoints allow the client to retrieve, add, update, and delete messages, using an admin key you can set in the `.env`.
 
-_The home route `/` lists the endpoints in the API. With the Glitch editor open showing the preview on the right, click __Change URL__ and add `messages` to the end to see the first `GET` request._
+_The home route `/` lists the endpoints in the API. With the Glitch editor open showing the preview on the right, click **Change URL** and add `messages` to the end to see the first `GET` request._
 
 ## What's in this project?
 
@@ -28,25 +28,26 @@ The API allows the client to update data if a valid key is provided. This is a s
 
 To set your app up to support auth:
 
-* In your `.env` file, find the variable named `ADMIN_KEY` and give it a text string as a value.
-* Pass the value with requests in an `admin_key` header.
+- In your `.env` file, find the variable named `ADMIN_KEY` and give it a text string as a value.
+- Pass the value with requests in an `admin_key` header.
 
 ## Making requests
 
-You can make requests to the API using curl on the command line or from any API client. Grab your API base URL when you remix the project–you can get it by clicking __Show__.
+You can make requests to the API using curl on the command line or from any API client. Grab your API base URL when you remix the project–you can get it by clicking **Show**.
 
 The following outline indicates requirements for each endpoint:
 
-* `GET /messages`
-* `POST /message` 🔒
-  * Include a request __Body__ with a property named `message`
-* `PUT /message` 🔒
-  * Include a request __Body__ with properties `id` and `message`
-* `DELETE /message` 🔒
-  * Include a query parameter named `id`
+- `GET /messages`
+- `POST /message` 🔒
+  - Include a request **Body** with a property named `message`
+- `PUT /message` 🔒
+  - Include a request **Body** with properties `id` and `message`
+- `DELETE /message` 🔒
+  - Include a query parameter named `id`
 
 🔒 For endpoints requiring auth:
-* Include your admin key value from the `.env` in a request header named `admin_key`.
+
+- Include your admin key value from the `.env` in a request header named `admin_key`.
 
 ![Glitch](https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2FLogo_Color.svg?v=1602781328576)
 
