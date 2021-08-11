@@ -4,6 +4,7 @@
 const http = require("http");
 
 const PORT = process.env.PORT || 3000;
+const STATUS_CODES = { OK: 200 };
 
 const server = http.createServer((request, response) => {
   router(request, response);
@@ -15,7 +16,6 @@ server.listen(PORT, () => {
 
 //ToDo move to other file
 function router(request, response) {
-  const STATUS_CODES = { OK: 200 };
 
   console.log(request.url, request.method);
 
