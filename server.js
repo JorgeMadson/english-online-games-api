@@ -1,4 +1,5 @@
 //based on https://www.section.io/engineering-education/a-raw-nodejs-rest-api-without-frameworks-such-as-express/
+// https://nodejs.dev/learn/get-http-request-body-data-using-nodejs
 
 const http = require("http");
 
